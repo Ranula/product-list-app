@@ -1,7 +1,4 @@
-import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Rating } from "@mui/material";
-
 const columns = [
   {
     field: "image",
@@ -10,7 +7,7 @@ const columns = [
     sortable: false,
     renderCell: (params) => (
       <img
-        src={params.value}
+        src={params.row.images[0].uri}
         height="30"
         width="30"
         style={{ marginLeft: "10px" }}
@@ -25,40 +22,23 @@ const columns = [
     flex: 1,
     minWidth: 200,
   },
-  { field: "category", headerName: "Category", sortable: false, width: 130 },
-  { field: "price", headerName: "Price", width: 130 },
-  {
-    field: "rating",
-    headerName: "Rating",
-    width: 130,
-    valueFormatter: ({ value }) => value.rate,
-    renderCell: (params) => (
-      <Rating
-        size="small"
-        readOnly
-        defaultValue={params.value.rate}
-        precision={0.5}
-      />
-    ),
-    sortComparator: (a, b) => {
-      if (a.rate > b.rate) return 1;
-      if (a.rate < b.rate) return -1;
-      if (a.rate === b.rate) return 0;
-    },
-  },
+  { field: "category", headerName: "Category", sortable: false, width: 130, valueGetter: (params) => (params.row.categories)},
+  { field: "price", headerName: "Price", width: 130, valueGetter: (params) => (params.row.priceInfo.price)}
 ];
 
 
-const DataTable = ({ products }) => {
+const DataTable = ({ products, handleEvent }) => {
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 510, width: "100%" }}>
       <DataGrid
         rows={products}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={8}
+        rowsPerPageOptions={[8]}
         disableColumnMenu
         disableSelectionOnClick
+        onRowClick={ (e) => {
+          handleEvent(e)} }
       />
     </div>
   );

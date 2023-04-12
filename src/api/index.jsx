@@ -1,11 +1,9 @@
-const API_URL = 'https://fakestoreapi.com/products'
+import productData from '../data/products.json'
 
-const fetchData = async (url) =>{
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
+const fetchData = async () =>{
+    return productData;
 }
 export const fetchProducts = (param = "all" ) => {
-    if(param === "all") return fetchData(API_URL);
-    return fetchData(`${API_URL}/category/${param}`);
+    if(param === "all") return fetchData();
 }
+

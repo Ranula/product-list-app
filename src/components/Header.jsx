@@ -14,7 +14,7 @@ const Header = () => {
             width="45"
             alt=" app Logo"
           />
-          <span className={styles.nav_logo_text}>Product List App</span>
+          <span className={styles.nav_logo_text}>Demo Product Catalogue</span>
         </div>
       </div>
       <div className={styles.line}></div>
