@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: product-list-app
+    image: product-list-app-image
+    build: 
+      context: .
+      args:
+        REACT_APP_GTM_ID: ${GTM_ID}
+    ports:
+      - 8080:80

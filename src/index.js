@@ -5,7 +5,7 @@ import App from './App';
 import TagManager from 'react-gtm-module'
 
 const tagManagerArgs = {
-    gtmId: 'GTM-000000', // To be configured
+    gtmId: process.env.REACT_APP_GTM_ID || 'GTM-XXXXXX', // To be configured
     events: {
       detailed_page_view: 'Detailed Page View',
     }

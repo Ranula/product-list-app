@@ -32,19 +32,15 @@ const Main = () => {
     //send event to GA
     TagManager.dataLayer({
       dataLayer: {
-          event: 'detailed_page_view', // event name declared during initialization
+          event: 'detailed_page_view',
           eventType: 'detail-page-view',
+          eventTime: new Date().toISOString(),
           visitorId: "60dd579e-ca8a-4306-9d77-12350d5a21db",
           productDetails: [{product: params.row, quantity: 1}]
          // add more data you want here
       }
    });
-   window.dataLayer.push({
-    event: 'event',
-    eventProps: {
-        category: 'category'
-    }
-  });
+   console.log(window.dataLayer)
   };
 
   useEffect(() => {
