@@ -29,12 +29,12 @@ const columns = [
 
 const DataTable = ({ products, handleEvent }) => {
   return (
-    <div style={{ height: 510, width: "100%" }}>
+    <div style={{ height: 325, width: "100%" }}>
       <DataGrid
         rows={products}
         columns={columns}
-        pageSize={8}
-        rowsPerPageOptions={[8]}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
         disableColumnMenu
         disableSelectionOnClick
         onRowClick={ (e) => {
